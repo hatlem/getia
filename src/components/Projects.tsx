@@ -69,47 +69,52 @@ const projects = [
 
 function ProjectCard({ project, index }: { project: typeof projects[0]; index: number }) {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const isInView = useInView(ref, { once: true, margin: "-50px" });
   const [isHovered, setIsHovered] = useState(false);
 
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 60 }}
+      initial={{ opacity: 0, y: 40 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.8, delay: index * 0.1 }}
+      transition={{ duration: 0.6, delay: index * 0.1 }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       className="group relative"
     >
-      <div className="relative overflow-hidden rounded-2xl glass h-full">
-        {/* Gradient overlay on hover */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: isHovered ? 1 : 0 }}
-          className="absolute inset-0 z-10"
-          style={{
-            background: `linear-gradient(135deg, ${project.color}20, transparent)`,
-          }}
-        />
-
+      <div
+        className="relative overflow-hidden rounded-2xl h-full transition-all duration-300"
+        style={{
+          background: 'linear-gradient(145deg, rgba(25, 25, 30, 0.95), rgba(15, 15, 20, 0.98))',
+          border: isHovered ? `1px solid ${project.color}40` : '1px solid rgba(255, 255, 255, 0.1)',
+          boxShadow: isHovered ? `0 8px 40px ${project.color}20` : '0 4px 20px rgba(0, 0, 0, 0.4)',
+        }}
+      >
         {/* Image placeholder */}
         <div
           className="aspect-video w-full relative overflow-hidden"
           style={{
-            background: `linear-gradient(135deg, ${project.color}30, ${project.color}10)`,
+            background: `linear-gradient(135deg, ${project.color}40, ${project.color}15)`,
           }}
         >
           <motion.div
-            animate={{ scale: isHovered ? 1.05 : 1 }}
+            animate={{ scale: isHovered ? 1.1 : 1 }}
             transition={{ duration: 0.6 }}
             className="absolute inset-0 flex items-center justify-center"
           >
-            <span className="text-6xl font-bold opacity-10">{project.title.charAt(0)}</span>
+            <span
+              className="text-7xl font-bold"
+              style={{ color: `${project.color}30` }}
+            >
+              {project.title.charAt(0)}
+            </span>
           </motion.div>
 
           {/* Category badge */}
-          <div className="absolute top-4 left-4 px-3 py-1 rounded-full bg-black/50 backdrop-blur-sm text-xs text-white">
+          <div
+            className="absolute top-4 left-4 px-3 py-1.5 rounded-full text-xs font-medium text-white"
+            style={{ background: `${project.color}90` }}
+          >
             {project.category}
           </div>
 
@@ -117,9 +122,10 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: isHovered ? 1 : 0, scale: isHovered ? 1 : 0.8 }}
+            transition={{ duration: 0.2 }}
             className="absolute top-4 right-4"
           >
-            <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center">
+            <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-lg">
               <ExternalLink className="w-4 h-4 text-black" />
             </div>
           </motion.div>
@@ -128,10 +134,19 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
         {/* Content */}
         <div className="p-6">
           <div className="flex items-start justify-between mb-3">
-            <h3 className="text-xl font-semibold text-white group-hover:text-indigo-400 transition-colors">
+            <h3
+              className="text-xl font-semibold transition-colors duration-300"
+              style={{ color: isHovered ? project.color : 'white' }}
+            >
               {project.title}
             </h3>
-            <ArrowUpRight className="w-5 h-5 text-zinc-500 group-hover:text-white transition-colors" />
+            <ArrowUpRight
+              className="w-5 h-5 transition-all duration-300"
+              style={{
+                color: isHovered ? 'white' : '#71717a',
+                transform: isHovered ? 'translate(2px, -2px)' : 'none'
+              }}
+            />
           </div>
 
           <p className="text-zinc-400 text-sm leading-relaxed mb-4">
@@ -143,7 +158,12 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
             {project.tags.map((tag) => (
               <span
                 key={tag}
-                className="px-2 py-1 rounded-full text-xs bg-white/5 text-zinc-400"
+                className="px-2.5 py-1 rounded-full text-xs font-medium"
+                style={{
+                  background: 'rgba(255, 255, 255, 0.06)',
+                  color: '#a1a1aa',
+                  border: '1px solid rgba(255, 255, 255, 0.08)'
+                }}
               >
                 {tag}
               </span>
@@ -151,10 +171,18 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
           </div>
 
           {/* Stats */}
-          <div className="flex items-center gap-4 pt-4 border-t border-white/5">
+          <div
+            className="flex items-center gap-6 pt-4"
+            style={{ borderTop: '1px solid rgba(255, 255, 255, 0.08)' }}
+          >
             {Object.entries(project.stats).map(([key, value]) => (
               <div key={key}>
-                <div className="text-lg font-semibold text-white">{value}</div>
+                <div
+                  className="text-lg font-bold"
+                  style={{ color: project.color }}
+                >
+                  {value}
+                </div>
                 <div className="text-xs text-zinc-500 capitalize">{key}</div>
               </div>
             ))}
@@ -171,19 +199,27 @@ export default function Projects() {
 
   return (
     <section id="projects" className="relative py-32 px-6">
-      <div className="max-w-7xl mx-auto">
+      {/* Background gradient */}
+      <div
+        className="absolute inset-0 opacity-50"
+        style={{
+          background: 'radial-gradient(ellipse 80% 60% at 50% 0%, rgba(99, 102, 241, 0.08), transparent)'
+        }}
+      />
+
+      <div className="max-w-7xl mx-auto relative">
         {/* Section header */}
         <motion.div
           ref={headerRef}
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={isHeaderInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-20"
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
         >
-          <span className="text-sm text-indigo-400 font-medium tracking-wider uppercase mb-4 block">
+          <span className="text-sm text-indigo-400 font-semibold tracking-wider uppercase mb-4 block">
             Portfolio
           </span>
-          <h2 className="text-4xl md:text-6xl font-bold gradient-text mb-6">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold gradient-text mb-6">
             Products that define markets
           </h2>
           <p className="text-zinc-400 max-w-2xl mx-auto text-lg">
@@ -192,7 +228,7 @@ export default function Projects() {
         </motion.div>
 
         {/* Projects grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, index) => (
             <ProjectCard key={project.id} project={project} index={index} />
           ))}
@@ -207,7 +243,8 @@ export default function Projects() {
         >
           <a
             href="#"
-            className="inline-flex items-center gap-2 text-zinc-400 hover:text-white transition-colors"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-zinc-300 hover:text-white transition-all duration-300 hover:bg-white/5"
+            style={{ border: '1px solid rgba(255, 255, 255, 0.1)' }}
           >
             <span>View all projects</span>
             <ArrowUpRight className="w-4 h-4" />
