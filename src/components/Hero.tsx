@@ -77,7 +77,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.9 }}
-          className="flex flex-wrap items-center gap-6 mb-24"
+          className="flex flex-wrap items-center gap-6"
         >
           <motion.a
             href="#work"
@@ -95,30 +95,6 @@ export default function Hero() {
           >
             Get in Touch
           </motion.a>
-        </motion.div>
-
-        {/* Stats row */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 1.1 }}
-          className="grid grid-cols-3 gap-8 max-w-xl"
-        >
-          {[
-            { value: "12+", label: "Active Products" },
-            { value: "$2M", label: "Revenue" },
-            { value: "50K", label: "Users" },
-          ].map((stat, i) => (
-            <motion.div
-              key={stat.label}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 1.2 + i * 0.1 }}
-            >
-              <div className="stat-number gradient-text">{stat.value}</div>
-              <div className="text-muted text-sm mt-2">{stat.label}</div>
-            </motion.div>
-          ))}
         </motion.div>
       </motion.div>
 

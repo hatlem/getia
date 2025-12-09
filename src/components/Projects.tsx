@@ -10,7 +10,6 @@ const projects = [
     title: "CookieMonster",
     category: "Privacy Tech",
     description: "Intelligent cookie consent management. GDPR-compliant, user-friendly.",
-    stats: { users: "10K+", mrr: "$12K" },
     span: "col-span-12 md:col-span-7",
     featured: true,
   },
@@ -19,7 +18,6 @@ const projects = [
     title: "RoomManager",
     category: "PropTech",
     description: "End-to-end property management for short-term rentals.",
-    stats: { properties: "500+", revenue: "$800K" },
     span: "col-span-12 md:col-span-5",
     featured: false,
   },
@@ -28,7 +26,6 @@ const projects = [
     title: "Customer Insights",
     category: "Analytics",
     description: "AI-powered customer intelligence platform.",
-    stats: { analyzed: "1M+", accuracy: "94%" },
     span: "col-span-12 md:col-span-4",
     featured: false,
   },
@@ -37,7 +34,6 @@ const projects = [
     title: "Lead Bidding",
     category: "AdTech",
     description: "Real-time lead marketplace connecting buyers and sellers.",
-    stats: { leads: "50K+", value: "$2M" },
     span: "col-span-12 md:col-span-4",
     featured: false,
   },
@@ -46,7 +42,6 @@ const projects = [
     title: "Creator Platform",
     category: "Creator Economy",
     description: "Monetization infrastructure for digital creators.",
-    stats: { creators: "2K+", payouts: "$500K" },
     span: "col-span-12 md:col-span-4",
     featured: false,
   },
@@ -55,7 +50,6 @@ const projects = [
     title: "TravelBuddy",
     category: "Travel Tech",
     description: "AI travel companion for perfect trip planning.",
-    stats: { trips: "15K+", savings: "30%" },
     span: "col-span-12 md:col-span-6",
     featured: true,
   },
@@ -91,19 +85,9 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
         </h3>
 
         {/* Description */}
-        <p className="text-dim text-sm leading-relaxed mb-8 max-w-md">
+        <p className="text-dim text-sm leading-relaxed max-w-md">
           {project.description}
         </p>
-
-        {/* Stats */}
-        <div className="flex items-center gap-8 mt-auto pt-6 border-t border-white/5">
-          {Object.entries(project.stats).map(([key, value]) => (
-            <div key={key}>
-              <div className="text-xl font-medium">{value}</div>
-              <div className="text-muted text-xs uppercase tracking-wider mt-1">{key}</div>
-            </div>
-          ))}
-        </div>
       </a>
     </motion.div>
   );

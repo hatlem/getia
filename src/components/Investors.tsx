@@ -4,13 +4,6 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { ArrowRight } from "lucide-react";
 
-const metrics = [
-  { value: "40%+", label: "CAGR Markets" },
-  { value: "12+", label: "Products" },
-  { value: "<90d", label: "To MVP" },
-  { value: "4x", label: "LTV/CAC" },
-];
-
 export default function Investors() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
@@ -34,32 +27,11 @@ export default function Investors() {
           </p>
         </motion.div>
 
-        {/* Metrics row */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-20"
-        >
-          {metrics.map((metric, i) => (
-            <motion.div
-              key={metric.label}
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.3 + i * 0.1 }}
-              className="card p-8 text-center"
-            >
-              <div className="stat-number gradient-text mb-2">{metric.value}</div>
-              <div className="text-muted text-sm">{metric.label}</div>
-            </motion.div>
-          ))}
-        </motion.div>
-
         {/* CTA Card */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.5 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
           className="card p-8 md:p-12"
         >
           <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -72,7 +44,7 @@ export default function Investors() {
               <div className="space-y-3 text-dim">
                 <div className="flex items-center gap-3">
                   <div className="w-1.5 h-1.5 rounded-full bg-white/40" />
-                  <span className="text-sm">Minimum check: $50K</span>
+                  <span className="text-sm">High-growth market opportunities</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <div className="w-1.5 h-1.5 rounded-full bg-white/40" />
@@ -86,10 +58,6 @@ export default function Investors() {
             </div>
 
             <div className="flex flex-col items-center md:items-end">
-              <div className="text-center md:text-right mb-8">
-                <div className="text-muted text-sm mb-2">Round Size</div>
-                <div className="text-6xl md:text-7xl font-light tracking-tight gradient-text">$5M</div>
-              </div>
               <motion.a
                 href="#contact"
                 className="btn btn-primary group"

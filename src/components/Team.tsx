@@ -7,7 +7,7 @@ const team = [
   {
     name: "Andreas Hatlem",
     role: "Founder & CEO",
-    bio: "Serial entrepreneur with 10+ years building digital products.",
+    bio: "Serial entrepreneur building digital products for over a decade.",
   },
   {
     name: "Tech Lead",

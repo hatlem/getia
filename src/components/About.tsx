@@ -49,46 +49,26 @@ export default function About() {
           </motion.div>
 
           {/* Right content */}
-          <div className="space-y-12">
-            {/* Metrics */}
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="grid grid-cols-2 gap-6"
-            >
-              <div className="card p-8">
-                <div className="stat-number gradient-text mb-2">92%</div>
-                <div className="text-muted text-sm">Success Rate</div>
-              </div>
-              <div className="card p-8">
-                <div className="stat-number gradient-text mb-2">3.2x</div>
-                <div className="text-muted text-sm">Avg. ROI</div>
-              </div>
-            </motion.div>
-
-            {/* Capabilities */}
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: 0.3 }}
-            >
-              <h3 className="text-sm text-muted tracking-widest uppercase mb-6">Capabilities</h3>
-              <div className="flex flex-wrap gap-3">
-                {capabilities.map((cap, i) => (
-                  <motion.span
-                    key={cap}
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                    transition={{ duration: 0.5, delay: 0.4 + i * 0.05 }}
-                    className="tag"
-                  >
-                    {cap}
-                  </motion.span>
-                ))}
-              </div>
-            </motion.div>
-          </div>
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            <h3 className="text-sm text-muted tracking-widest uppercase mb-6">Capabilities</h3>
+            <div className="flex flex-wrap gap-3">
+              {capabilities.map((cap, i) => (
+                <motion.span
+                  key={cap}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                  transition={{ duration: 0.5, delay: 0.3 + i * 0.05 }}
+                  className="tag"
+                >
+                  {cap}
+                </motion.span>
+              ))}
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>
