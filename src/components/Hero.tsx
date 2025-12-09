@@ -2,7 +2,6 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import { ArrowDown } from "lucide-react";
 
 export default function Hero() {
   const ref = useRef(null);
@@ -11,113 +10,113 @@ export default function Hero() {
     offset: ["start start", "end start"],
   });
 
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+  const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
   return (
-    <section ref={ref} className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Effects */}
-      <div className="absolute inset-0 radial-gradient" />
-      <div className="absolute inset-0 grid-background" />
-
-      {/* Floating orbs */}
+    <section ref={ref} className="relative min-h-screen flex items-center overflow-hidden">
+      {/* Subtle gradient orbs */}
       <motion.div
         style={{ y }}
-        className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-indigo-500/10 blur-3xl animate-pulse-glow"
-      />
-      <motion.div
-        style={{ y }}
-        className="absolute bottom-1/4 right-1/4 w-80 h-80 rounded-full bg-purple-500/10 blur-3xl animate-pulse-glow"
-        initial={{ opacity: 0.3 }}
-      />
+        className="absolute top-1/3 -left-40 w-[600px] h-[600px] rounded-full opacity-20"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 0.15 }}
+        transition={{ duration: 2 }}
+      >
+        <div className="w-full h-full bg-gradient-to-br from-white/10 to-transparent blur-3xl" />
+      </motion.div>
 
-      <motion.div style={{ opacity }} className="relative z-10 text-center px-6 max-w-6xl mx-auto">
-        {/* Badge */}
+      <motion.div style={{ opacity }} className="container relative z-10 pt-32">
+        {/* Overline */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass mb-8"
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="mb-8"
         >
-          <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-          <span className="text-sm text-zinc-400">Now raising Series A</span>
+          <span className="text-dim text-sm tracking-widest uppercase">
+            Venture Studio — Oslo
+          </span>
         </motion.div>
 
         {/* Main headline */}
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.1 }}
-          className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-none mb-6"
-        >
-          <span className="block gradient-text">Building the future</span>
-          <span className="block mt-2">
-            of <span className="gradient-text-accent">digital products</span>
-          </span>
-        </motion.h1>
+        <div className="overflow-hidden mb-6">
+          <motion.h1
+            initial={{ y: "100%" }}
+            animate={{ y: 0 }}
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
+            className="display-xl"
+          >
+            We build
+          </motion.h1>
+        </div>
+        <div className="overflow-hidden mb-12">
+          <motion.h1
+            initial={{ y: "100%" }}
+            animate={{ y: 0 }}
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.4 }}
+            className="display-xl gradient-text"
+          >
+            digital products
+          </motion.h1>
+        </div>
 
         {/* Subheadline */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="text-lg md:text-xl text-zinc-400 max-w-2xl mx-auto mb-12"
+          transition={{ duration: 0.8, delay: 0.7 }}
+          className="text-dim text-lg md:text-xl max-w-xl leading-relaxed mb-16"
         >
-          We transform bold ideas into market-defining products.
-          Our portfolio spans AI, SaaS, and next-generation consumer experiences.
+          Transform bold ideas into market-defining companies.
+          Our portfolio spans AI, SaaS, and next-generation experiences.
         </motion.p>
 
-        {/* CTA Buttons */}
+        {/* CTAs */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.5 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4"
+          transition={{ duration: 0.8, delay: 0.9 }}
+          className="flex flex-wrap items-center gap-6 mb-24"
         >
           <motion.a
-            href="#projects"
+            href="#work"
+            className="btn btn-primary"
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
-            className="group relative px-8 py-4 rounded-full overflow-hidden"
           >
-            <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 animate-gradient" />
-            <span className="relative text-white font-medium flex items-center gap-2">
-              Explore Portfolio
-              <ArrowDown className="w-4 h-4 group-hover:translate-y-1 transition-transform" />
-            </span>
+            View Work
           </motion.a>
-
           <motion.a
             href="#contact"
+            className="btn btn-outline"
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
-            className="px-8 py-4 rounded-full glass text-white font-medium hover:bg-white/10 transition-colors"
           >
-            Partner With Us
+            Get in Touch
           </motion.a>
         </motion.div>
 
-        {/* Stats */}
+        {/* Stats row */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
-          className="mt-20 grid grid-cols-3 gap-8 max-w-2xl mx-auto"
+          transition={{ duration: 1, delay: 1.1 }}
+          className="grid grid-cols-3 gap-8 max-w-xl"
         >
           {[
             { value: "12+", label: "Active Products" },
-            { value: "$2M+", label: "Revenue Generated" },
-            { value: "50K+", label: "Users Served" },
+            { value: "$2M", label: "Revenue" },
+            { value: "50K", label: "Users" },
           ].map((stat, i) => (
             <motion.div
               key={stat.label}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.9 + i * 0.1 }}
-              className="text-center"
+              transition={{ duration: 0.6, delay: 1.2 + i * 0.1 }}
             >
-              <div className="text-3xl md:text-4xl font-bold gradient-text-accent">{stat.value}</div>
-              <div className="text-sm text-zinc-500 mt-1">{stat.label}</div>
+              <div className="stat-number gradient-text">{stat.value}</div>
+              <div className="text-muted text-sm mt-2">{stat.label}</div>
             </motion.div>
           ))}
         </motion.div>
@@ -127,15 +126,15 @@ export default function Hero() {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.5 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2"
+        transition={{ delay: 1.8 }}
+        className="absolute bottom-12 left-1/2 -translate-x-1/2"
       >
         <motion.div
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
-          className="w-6 h-10 rounded-full border border-zinc-700 flex items-start justify-center p-2"
+          animate={{ y: [0, 8, 0] }}
+          transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+          className="w-5 h-8 rounded-full border border-white/20 flex items-start justify-center p-1.5"
         >
-          <motion.div className="w-1 h-2 rounded-full bg-zinc-500" />
+          <div className="w-0.5 h-1.5 rounded-full bg-white/40" />
         </motion.div>
       </motion.div>
     </section>
