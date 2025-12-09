@@ -1,7 +1,6 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { motion } from "framer-motion";
 
 const capabilities = [
   "Product Strategy",
@@ -13,29 +12,27 @@ const capabilities = [
 ];
 
 export default function About() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-
   return (
-    <section id="about" className="section">
-      <div className="container">
-        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-start">
-          {/* Left content */}
+    <section id="about" className="section relative overflow-hidden">
+      {/* Background accent */}
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-purple-500/5 rounded-full blur-[150px]" />
+
+      <div className="container relative">
+        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24">
+          {/* Left */}
           <motion.div
-            ref={ref}
-            initial={{ opacity: 0, y: 40 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8 }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
           >
-            <span className="text-muted text-sm tracking-widest uppercase mb-6 block">
-              About
-            </span>
-            <h2 className="display-lg mb-8">
+            <span className="label mb-6 block">About Us</span>
+            <h2 className="section-title mb-8">
               We don&apos;t just invest.
               <br />
               <span className="gradient-text">We build.</span>
             </h2>
-            <div className="space-y-6 text-dim leading-relaxed">
+            <div className="space-y-6 body-lg">
               <p>
                 Getia is a venture studio based in Oslo. We identify market opportunities,
                 assemble world-class teams, and create products that capture significant market share.
@@ -48,24 +45,27 @@ export default function About() {
             </div>
           </motion.div>
 
-          {/* Right content */}
+          {/* Right */}
           <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="lg:pt-20"
           >
-            <h3 className="text-sm text-muted tracking-widest uppercase mb-6">Capabilities</h3>
-            <div className="flex flex-wrap gap-3">
+            <h3 className="label mb-8">Our Capabilities</h3>
+            <div className="grid grid-cols-2 gap-4">
               {capabilities.map((cap, i) => (
-                <motion.span
+                <motion.div
                   key={cap}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                  transition={{ duration: 0.5, delay: 0.3 + i * 0.05 }}
-                  className="tag"
+                  initial={{ opacity: 0, x: 20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: 0.3 + i * 0.1 }}
+                  className="solid-card p-5"
                 >
-                  {cap}
-                </motion.span>
+                  <span className="text-white font-medium">{cap}</span>
+                </motion.div>
               ))}
             </div>
           </motion.div>

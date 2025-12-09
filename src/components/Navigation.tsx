@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 
@@ -14,59 +13,36 @@ export default function Navigation() {
   }, []);
 
   return (
-    <motion.header
-      initial={{ y: -100, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled ? "py-4" : "py-6"
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled ? "bg-black/80 backdrop-blur-xl border-b border-white/5" : ""
       }`}
     >
-      <nav className="container flex items-center justify-between">
-        {/* Logo */}
-        <Link href="/" className="relative z-10">
-          <motion.span
-            className="text-xl font-medium tracking-tight"
-            whileHover={{ opacity: 0.7 }}
-          >
-            Getia
-          </motion.span>
+      <nav className="container flex items-center justify-between h-20">
+        <Link href="/" className="text-xl font-semibold tracking-tight">
+          Getia
         </Link>
 
-        {/* Center nav */}
-        <div className="hidden md:flex items-center gap-12">
+        <div className="hidden md:flex items-center gap-10">
           {[
             { name: "Work", href: "#work" },
             { name: "About", href: "#about" },
             { name: "Contact", href: "#contact" },
-          ].map((item, i) => (
-            <motion.a
+          ].map((item) => (
+            <a
               key={item.name}
               href={item.href}
-              className="text-sm text-dim hover:text-white transition-colors duration-300 relative group"
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 * i, duration: 0.5 }}
+              className="text-sm text-gray-400 hover:text-white transition-colors"
             >
               {item.name}
-              <span className="absolute -bottom-1 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-300" />
-            </motion.a>
+            </a>
           ))}
         </div>
 
-        {/* CTA */}
-        <motion.a
-          href="#contact"
-          className="btn btn-primary text-sm"
-          whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.98 }}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.4 }}
-        >
-          Let&apos;s Talk
-        </motion.a>
+        <a href="#contact" className="btn btn-primary text-sm py-3 px-6">
+          Get in Touch
+        </a>
       </nav>
-    </motion.header>
+    </header>
   );
 }

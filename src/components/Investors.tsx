@@ -1,72 +1,79 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
-import { ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";
+import { ArrowRight, CheckCircle } from "lucide-react";
+
+const benefits = [
+  "Access to high-growth market opportunities",
+  "Pro-rata rights for follow-on investments",
+  "Quarterly investor updates and metrics",
+  "Direct line to founding teams",
+];
 
 export default function Investors() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-
   return (
     <section className="section">
       <div className="container">
+        {/* Header */}
         <motion.div
-          ref={ref}
-          initial={{ opacity: 0, y: 40 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-20"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
         >
-          <span className="text-muted text-sm tracking-widest uppercase mb-6 block">
-            For Investors
-          </span>
-          <h2 className="display-lg mb-6">Investment Thesis</h2>
-          <p className="text-dim max-w-2xl mx-auto text-lg">
-            We&apos;re raising our Series A to accelerate growth across our portfolio.
+          <span className="label mb-6 block">For Investors</span>
+          <h2 className="section-title mb-6">Investment Thesis</h2>
+          <p className="body-lg max-w-2xl mx-auto">
+            We&apos;re raising our Series A to accelerate growth across our portfolio of
+            market-defining products.
           </p>
         </motion.div>
 
         {/* CTA Card */}
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="card p-8 md:p-12"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="glass-card p-8 md:p-12 relative overflow-hidden"
         >
-          <div className="grid md:grid-cols-2 gap-12 items-center">
+          {/* Background gradient */}
+          <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-gradient-to-br from-purple-500/20 to-blue-500/20 rounded-full blur-[100px]" />
+
+          <div className="relative grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <h3 className="display-md mb-6">Join Our Cap Table</h3>
-              <p className="text-dim leading-relaxed mb-8">
+              <h3 className="card-title text-white mb-6">Join Our Cap Table</h3>
+              <p className="body-lg mb-8">
                 We&apos;re selectively partnering with investors who bring more than capital.
                 Strategic LPs with industry expertise receive priority allocation.
               </p>
-              <div className="space-y-3 text-dim">
-                <div className="flex items-center gap-3">
-                  <div className="w-1.5 h-1.5 rounded-full bg-white/40" />
-                  <span className="text-sm">High-growth market opportunities</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <div className="w-1.5 h-1.5 rounded-full bg-white/40" />
-                  <span className="text-sm">Pro-rata rights for follow-on</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <div className="w-1.5 h-1.5 rounded-full bg-white/40" />
-                  <span className="text-sm">Quarterly investor updates</span>
-                </div>
+
+              <div className="space-y-4">
+                {benefits.map((benefit, i) => (
+                  <motion.div
+                    key={benefit}
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: 0.3 + i * 0.1 }}
+                    className="flex items-center gap-3"
+                  >
+                    <CheckCircle className="w-5 h-5 text-purple-400 flex-shrink-0" />
+                    <span className="text-gray-300">{benefit}</span>
+                  </motion.div>
+                ))}
               </div>
             </div>
 
-            <div className="flex flex-col items-center md:items-end">
-              <motion.a
+            <div className="flex justify-center md:justify-end">
+              <a
                 href="#contact"
-                className="btn btn-primary group"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
+                className="btn btn-primary text-lg py-4 px-8 glow"
               >
-                Request Deck
-                <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-              </motion.a>
+                Request Investor Deck
+                <ArrowRight className="w-5 h-5" />
+              </a>
             </div>
           </div>
         </motion.div>

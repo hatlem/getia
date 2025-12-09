@@ -1,69 +1,69 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { motion } from "framer-motion";
 
 const team = [
   {
     name: "Andreas Hatlem",
     role: "Founder & CEO",
     bio: "Serial entrepreneur building digital products for over a decade.",
+    gradient: "from-violet-500/20 to-purple-500/20",
   },
   {
     name: "Tech Lead",
     role: "CTO",
     bio: "Full-stack architect scaling systems to millions of users.",
+    gradient: "from-blue-500/20 to-cyan-500/20",
   },
   {
     name: "Growth Partner",
     role: "Head of Growth",
     bio: "Growth expert driving acquisition for multiple unicorns.",
+    gradient: "from-emerald-500/20 to-teal-500/20",
   },
 ];
 
 export default function Team() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-
   return (
     <section className="section">
       <div className="container">
+        {/* Header */}
         <motion.div
-          ref={ref}
-          initial={{ opacity: 0, y: 40 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
           className="mb-16"
         >
-          <span className="text-muted text-sm tracking-widest uppercase mb-6 block">
-            Team
-          </span>
-          <h2 className="display-lg">
+          <span className="label mb-6 block">The Team</span>
+          <h2 className="section-title">
             Built by <span className="gradient-text">operators</span>
           </h2>
         </motion.div>
 
+        {/* Team grid */}
         <div className="grid md:grid-cols-3 gap-6">
-          {team.map((member, index) => (
+          {team.map((member, i) => (
             <motion.div
               key={member.name}
-              initial={{ opacity: 0, y: 40 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: 0.2 + index * 0.1 }}
-              className="card p-8 group"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: i * 0.1 }}
+              className="solid-card p-8 group"
             >
-              {/* Avatar placeholder */}
-              <div className="w-16 h-16 rounded-full bg-gradient-to-br from-white/10 to-white/5 mb-6 flex items-center justify-center">
-                <span className="text-2xl font-light text-white/30">
+              {/* Avatar */}
+              <div className={`w-20 h-20 rounded-2xl bg-gradient-to-br ${member.gradient} mb-6 flex items-center justify-center`}>
+                <span className="text-3xl font-semibold text-white/80">
                   {member.name.charAt(0)}
                 </span>
               </div>
 
-              <h3 className="text-xl font-medium mb-1 group-hover:gradient-text transition-all duration-300">
+              <h3 className="text-xl font-medium text-white mb-1 group-hover:text-purple-400 transition-colors">
                 {member.name}
               </h3>
-              <p className="text-muted text-sm mb-4">{member.role}</p>
-              <p className="text-dim text-sm leading-relaxed">{member.bio}</p>
+              <p className="text-purple-400 text-sm mb-4">{member.role}</p>
+              <p className="body-sm">{member.bio}</p>
             </motion.div>
           ))}
         </div>
