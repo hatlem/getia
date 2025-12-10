@@ -86,7 +86,7 @@ export default function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.9, duration: 0.6 }}
-        className="container pb-8 flex items-end justify-between"
+        className="container py-8 flex items-end justify-between"
       >
         {/* Scroll indicator - hidden on mobile */}
         <div className="scroll-indicator hidden md:block" />
