@@ -38,35 +38,35 @@ const projects = [
 
 export default function Projects() {
   return (
-    <section id="work" className="section">
+    <section id="work" className="section section-border">
       <div className="container">
         {/* Header */}
-        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-20">
+        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 lg:gap-12 mb-16 lg:mb-20">
           <div>
             <motion.span
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              className="label mb-6 block"
+              className="label mb-5 block"
             >
               Portfolio
             </motion.span>
             <motion.h2
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
+              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
               className="headline"
             >
               Selected <span className="serif-accent">Work</span>
             </motion.h2>
           </div>
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="body-lg max-w-md lg:text-right"
+            transition={{ duration: 0.5, delay: 0.15 }}
+            className="body-lg max-w-sm lg:text-right"
           >
             Products we&apos;ve built from the ground up, each solving real problems at scale.
           </motion.p>
@@ -78,17 +78,17 @@ export default function Projects() {
             <motion.a
               key={project.title}
               href="#"
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 32 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.5, delay: i * 0.08, ease: [0.16, 1, 0.3, 1] }}
               className="project-card group"
             >
               {/* Background with gradient */}
               <div
                 className="project-card-bg"
                 style={{
-                  background: `radial-gradient(circle at 30% 70%, ${project.color}20 0%, transparent 60%)`,
+                  background: `radial-gradient(ellipse at 30% 80%, ${project.color}25 0%, transparent 55%)`,
                 }}
               />
 

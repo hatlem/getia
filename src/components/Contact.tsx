@@ -18,29 +18,29 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="section relative overflow-hidden">
+    <section id="contact" className="section section-border relative overflow-hidden">
       {/* Accent blur */}
       <div
         className="gradient-blur bg-[#c8ff00]"
-        style={{ bottom: '-20%', left: '50%', transform: 'translateX(-50%)', opacity: 0.08 }}
+        style={{ bottom: '-20%', left: '50%', transform: 'translateX(-50%)', opacity: 0.06 }}
       />
 
       <div className="container relative">
-        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20">
           {/* Left */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
           >
-            <span className="label mb-6 block">Contact</span>
-            <h2 className="headline mb-8">
+            <span className="label mb-5 block">Contact</span>
+            <h2 className="headline mb-6">
               Let&apos;s build
               <br />
               <span className="serif-accent">together</span>
             </h2>
-            <p className="body-lg mb-12 max-w-md">
+            <p className="body-lg mb-10 max-w-md">
               Whether you&apos;re an investor, founder, or talent — we want to hear from you.
             </p>
 
@@ -71,13 +71,13 @@ export default function Contact() {
 
           {/* Right - Form */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            transition={{ duration: 0.5, delay: 0.15 }}
           >
-            <form onSubmit={handleSubmit} className="card-glass p-8">
-              <div className="space-y-6">
+            <form onSubmit={handleSubmit} className="card-glass p-6 lg:p-8">
+              <div className="space-y-5">
                 <div>
                   <label className="label mb-3 block">Name</label>
                   <input

@@ -4,9 +4,9 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="py-12 border-t border-gray-900">
+    <footer className="py-10 lg:py-12 border-t border-gray-900">
       <div className="container">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-8">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           <Link href="/" className="text-xl font-medium tracking-tight">
             Getia
           </Link>

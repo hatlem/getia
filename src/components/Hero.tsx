@@ -12,39 +12,39 @@ export default function Hero() {
       {/* Gradient blur accent */}
       <div
         className="gradient-blur bg-[#c8ff00]"
-        style={{ top: '20%', right: '-10%', opacity: 0.08 }}
+        style={{ top: '15%', right: '-5%', opacity: 0.06 }}
       />
 
-      <div className="container relative z-10 pt-32 pb-20">
-        <div className="max-w-6xl">
+      <div className="container relative z-10 pt-40 pb-24 lg:pt-48 lg:pb-32">
+        <div className="max-w-5xl">
           {/* Eyebrow */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="mb-8"
+            transition={{ duration: 0.5 }}
+            className="mb-10 lg:mb-12"
           >
             <span className="label">Venture Studio</span>
-            <span className="mx-3 text-gray-700">—</span>
+            <span className="mx-4 text-gray-800">—</span>
             <span className="label">Oslo, Norway</span>
           </motion.div>
 
           {/* Main headline */}
-          <div className="overflow-hidden mb-6">
+          <div className="overflow-hidden">
             <motion.h1
-              initial={{ y: 120 }}
+              initial={{ y: 100 }}
               animate={{ y: 0 }}
-              transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
+              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
               className="display"
             >
               We build
             </motion.h1>
           </div>
-          <div className="overflow-hidden mb-12">
+          <div className="overflow-hidden mb-10 lg:mb-14">
             <motion.h1
-              initial={{ y: 120 }}
+              initial={{ y: 100 }}
               animate={{ y: 0 }}
-              transition={{ duration: 0.8, delay: 0.1, ease: [0.4, 0, 0.2, 1] }}
+              transition={{ duration: 0.7, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
               className="display"
             >
               <span className="serif-accent">digital</span> products
@@ -53,10 +53,10 @@ export default function Hero() {
 
           {/* Description */}
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="body-lg max-w-lg mb-12"
+            transition={{ duration: 0.5, delay: 0.35 }}
+            className="body-lg max-w-md mb-10 lg:mb-12"
           >
             We transform bold ideas into market-defining companies.
             Our portfolio spans AI, SaaS, and next-generation digital experiences.
@@ -64,10 +64,10 @@ export default function Hero() {
 
           {/* CTAs */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
-            className="flex flex-wrap gap-4"
+            transition={{ duration: 0.5, delay: 0.5 }}
+            className="flex flex-wrap items-center gap-4"
           >
             <a href="#work" className="btn btn-primary hover-glow">
               View Our Work
@@ -83,16 +83,16 @@ export default function Hero() {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 1, duration: 0.8 }}
-          className="absolute bottom-10 left-0 right-0 px-6 md:px-12 lg:px-20 flex items-end justify-between"
+          transition={{ delay: 0.9, duration: 0.6 }}
+          className="absolute bottom-8 left-6 right-6 md:left-12 md:right-12 lg:left-16 lg:right-16 flex items-end justify-between"
         >
           {/* Scroll indicator */}
           <div className="scroll-indicator" />
 
           {/* Status */}
-          <div className="hidden md:flex items-center gap-3">
-            <span className="w-2 h-2 rounded-full bg-[#c8ff00] animate-pulse" />
-            <span className="label">Available for new ventures</span>
+          <div className="status-indicator">
+            <span className="status-dot" />
+            <span>Available for new ventures</span>
           </div>
         </motion.div>
       </div>

@@ -25,17 +25,17 @@ const team = [
 
 export default function Team() {
   return (
-    <section className="section">
+    <section className="section section-border">
       <div className="container">
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mb-16"
+          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+          className="mb-12 lg:mb-16"
         >
-          <span className="label mb-6 block">The Team</span>
+          <span className="label mb-5 block">The Team</span>
           <h2 className="headline">
             Built by <span className="serif-accent">operators</span>
           </h2>
@@ -46,10 +46,10 @@ export default function Team() {
           {team.map((member, i) => (
             <motion.div
               key={member.name}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
+              transition={{ duration: 0.5, delay: i * 0.08 }}
               className="team-card group"
             >
               {/* Avatar */}
