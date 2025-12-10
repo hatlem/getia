@@ -5,7 +5,7 @@ import { ArrowDown } from "lucide-react";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden">
+    <section className="relative min-h-screen flex flex-col overflow-hidden">
       {/* Grain overlay */}
       <div className="grain" />
 
@@ -15,7 +15,8 @@ export default function Hero() {
         style={{ top: '15%', right: '-5%', opacity: 0.06 }}
       />
 
-      <div className="container relative z-10 pt-40 pb-24 lg:pt-48 lg:pb-32">
+      {/* Main content */}
+      <div className="container relative z-10 flex-1 flex items-center pt-32 pb-32">
         <div className="max-w-5xl">
           {/* Eyebrow */}
           <motion.div
@@ -78,24 +79,24 @@ export default function Hero() {
             </a>
           </motion.div>
         </div>
-
-        {/* Bottom row */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.9, duration: 0.6 }}
-          className="absolute bottom-8 left-6 right-6 md:left-12 md:right-12 lg:left-16 lg:right-16 flex items-end justify-between"
-        >
-          {/* Scroll indicator */}
-          <div className="scroll-indicator" />
-
-          {/* Status */}
-          <div className="status-indicator">
-            <span className="status-dot" />
-            <span>Available for new ventures</span>
-          </div>
-        </motion.div>
       </div>
+
+      {/* Bottom row - positioned at bottom of section */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.9, duration: 0.6 }}
+        className="container pb-8 flex items-end justify-between"
+      >
+        {/* Scroll indicator - hidden on mobile */}
+        <div className="scroll-indicator hidden md:block" />
+
+        {/* Status */}
+        <div className="status-indicator ml-auto">
+          <span className="status-dot" />
+          <span>Available for new ventures</span>
+        </div>
+      </motion.div>
     </section>
   );
 }
