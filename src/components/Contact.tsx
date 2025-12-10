@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { Send, Mail, MapPin } from "lucide-react";
+import { Send, Mail, MapPin, Check, Loader2 } from "lucide-react";
 
 export default function Contact() {
   const [formState, setFormState] = useState({
@@ -11,10 +11,31 @@ export default function Contact() {
     type: "investor",
     message: "",
   });
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [errorMessage, setErrorMessage] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log(formState);
+    setStatus("loading");
+    setErrorMessage("");
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formState),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to send message");
+      }
+
+      setStatus("success");
+      setFormState({ name: "", email: "", type: "investor", message: "" });
+    } catch {
+      setStatus("error");
+      setErrorMessage("Something went wrong. Please try again or email us directly.");
+    }
   };
 
   return (
@@ -129,10 +150,35 @@ export default function Contact() {
                   />
                 </div>
 
-                <button type="submit" className="btn btn-primary w-full hover-glow">
-                  Send Message
-                  <Send className="w-4 h-4" />
+                <button
+                  type="submit"
+                  disabled={status === "loading" || status === "success"}
+                  className={`btn w-full ${
+                    status === "success"
+                      ? "bg-green-500 text-white"
+                      : "btn-primary hover-glow"
+                  } disabled:opacity-70 disabled:cursor-not-allowed`}
+                >
+                  {status === "loading" ? (
+                    <>
+                      Sending...
+                      <Loader2 className="w-4 h-4 animate-spin" />
+                    </>
+                  ) : status === "success" ? (
+                    <>
+                      Message Sent!
+                      <Check className="w-4 h-4" />
+                    </>
+                  ) : (
+                    <>
+                      Send Message
+                      <Send className="w-4 h-4" />
+                    </>
+                  )}
                 </button>
+                {status === "error" && (
+                  <p className="text-red-400 text-sm mt-3">{errorMessage}</p>
+                )}
               </div>
             </form>
           </motion.div>
