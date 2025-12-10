@@ -7,38 +7,32 @@ const projects = [
   {
     title: "CookieMonster",
     category: "Privacy Tech",
-    description: "Intelligent cookie consent management for the modern web.",
-    gradient: "from-violet-600/20 to-purple-600/20",
+    color: "#8b5cf6",
   },
   {
     title: "RoomManager",
     category: "PropTech",
-    description: "End-to-end property management for short-term rentals.",
-    gradient: "from-blue-600/20 to-cyan-600/20",
+    color: "#06b6d4",
   },
   {
     title: "Customer Insights",
     category: "Analytics",
-    description: "AI-powered customer intelligence platform.",
-    gradient: "from-emerald-600/20 to-teal-600/20",
+    color: "#10b981",
   },
   {
     title: "Lead Bidding",
     category: "AdTech",
-    description: "Real-time lead marketplace connecting buyers and sellers.",
-    gradient: "from-orange-600/20 to-amber-600/20",
+    color: "#f59e0b",
   },
   {
     title: "Creator Platform",
     category: "Creator Economy",
-    description: "Monetization infrastructure for digital creators.",
-    gradient: "from-pink-600/20 to-rose-600/20",
+    color: "#ec4899",
   },
   {
     title: "TravelBuddy",
     category: "Travel Tech",
-    description: "AI travel companion for perfect trip planning.",
-    gradient: "from-indigo-600/20 to-blue-600/20",
+    color: "#6366f1",
   },
 ];
 
@@ -47,14 +41,35 @@ export default function Projects() {
     <section id="work" className="section">
       <div className="container">
         {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16">
+        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-20">
           <div>
-            <span className="label mb-4 block">Portfolio</span>
-            <h2 className="section-title">Selected Work</h2>
+            <motion.span
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              className="label mb-6 block"
+            >
+              Portfolio
+            </motion.span>
+            <motion.h2
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="headline"
+            >
+              Selected <span className="serif-accent">Work</span>
+            </motion.h2>
           </div>
-          <p className="body-lg max-w-md">
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="body-lg max-w-md lg:text-right"
+          >
             Products we&apos;ve built from the ground up, each solving real problems at scale.
-          </p>
+          </motion.p>
         </div>
 
         {/* Projects grid */}
@@ -63,32 +78,35 @@ export default function Projects() {
             <motion.a
               key={project.title}
               href="#"
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.6, delay: i * 0.1 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.5, delay: i * 0.1 }}
               className="project-card group"
             >
-              {/* Background */}
-              <div className={`project-card-bg bg-gradient-to-br ${project.gradient}`}>
-                {/* Large letter */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <span className="text-[200px] font-bold text-white/5 select-none">
-                    {project.title.charAt(0)}
-                  </span>
-                </div>
-              </div>
+              {/* Background with gradient */}
+              <div
+                className="project-card-bg"
+                style={{
+                  background: `radial-gradient(circle at 30% 70%, ${project.color}20 0%, transparent 60%)`,
+                }}
+              />
 
-              {/* Icon */}
-              <div className="project-card-icon">
-                <ArrowUpRight className="w-5 h-5 text-white" />
+              {/* Arrow icon */}
+              <div className="project-card-arrow">
+                <ArrowUpRight className="w-4 h-4 text-black" />
               </div>
 
               {/* Content */}
-              <div className="project-card-content">
-                <span className="tag mb-3 w-fit">{project.category}</span>
-                <h3 className="card-title text-white mb-2">{project.title}</h3>
-                <p className="body-sm text-gray-400">{project.description}</p>
+              <div className="project-card-inner">
+                <span className="project-card-number">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+
+                <div className="project-card-content">
+                  <p className="project-card-category">{project.category}</p>
+                  <h3 className="project-card-title">{project.title}</h3>
+                </div>
               </div>
             </motion.a>
           ))}

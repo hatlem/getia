@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 
 export default function Navigation() {
   const [scrolled, setScrolled] = useState(false);
@@ -13,36 +14,43 @@ export default function Navigation() {
   }, []);
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-black/80 backdrop-blur-xl border-b border-white/5" : ""
+    <motion.header
+      initial={{ y: -20, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.6 }}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        scrolled
+          ? "py-4 bg-[#0a0a0a]/90 backdrop-blur-xl border-b border-gray-900/50"
+          : "py-6"
       }`}
     >
-      <nav className="container flex items-center justify-between h-20">
-        <Link href="/" className="text-xl font-semibold tracking-tight">
+      <nav className="container flex items-center justify-between">
+        <Link
+          href="/"
+          className="text-xl font-medium tracking-tight hover:opacity-70 transition-opacity"
+        >
           Getia
         </Link>
 
         <div className="hidden md:flex items-center gap-10">
-          {[
-            { name: "Work", href: "#work" },
-            { name: "About", href: "#about" },
-            { name: "Contact", href: "#contact" },
-          ].map((item) => (
+          {["Work", "About", "Contact"].map((item) => (
             <a
-              key={item.name}
-              href={item.href}
-              className="text-sm text-gray-400 hover:text-white transition-colors"
+              key={item}
+              href={`#${item.toLowerCase()}`}
+              className="nav-link"
             >
-              {item.name}
+              {item}
             </a>
           ))}
         </div>
 
-        <a href="#contact" className="btn btn-primary text-sm py-3 px-6">
+        <a
+          href="#contact"
+          className="text-sm font-medium px-5 py-2.5 rounded-full border border-gray-800 hover:bg-gray-900 hover:border-gray-700 transition-all"
+        >
           Get in Touch
         </a>
       </nav>
-    </header>
+    </motion.header>
   );
 }

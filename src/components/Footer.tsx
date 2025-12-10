@@ -4,10 +4,10 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="py-8 border-t border-gray-900">
+    <footer className="py-12 border-t border-gray-900">
       <div className="container">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-          <Link href="/" className="text-xl font-semibold">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-8">
+          <Link href="/" className="text-xl font-medium tracking-tight">
             Getia
           </Link>
 
@@ -16,7 +16,7 @@ export default function Footer() {
               <a
                 key={item}
                 href={`#${item.toLowerCase()}`}
-                className="text-sm text-gray-500 hover:text-white transition-colors"
+                className="footer-link"
               >
                 {item}
               </a>
