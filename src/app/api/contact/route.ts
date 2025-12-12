@@ -1,7 +1,9 @@
 import { Resend } from 'resend';
 import { NextResponse } from 'next/server';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+function getResend() {
+  return new Resend(process.env.RESEND_API_KEY);
+}
 
 export async function POST(request: Request) {
   try {
@@ -17,6 +19,7 @@ export async function POST(request: Request) {
     }
 
     // Send email to you
+    const resend = getResend();
     const { error } = await resend.emails.send({
       from: 'Getia Contact <onboarding@resend.dev>',
       to: 'hello@getia.no',
