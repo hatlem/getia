@@ -12,15 +12,9 @@ export default function Footer() {
           </Link>
 
           <nav className="flex items-center gap-8">
-            {["Work", "About", "Contact"].map((item) => (
-              <a
-                key={item}
-                href={`#${item.toLowerCase()}`}
-                className="footer-link"
-              >
-                {item}
-              </a>
-            ))}
+            <Link href="/terms" className="footer-link">Terms</Link>
+            <Link href="/privacy" className="footer-link">Privacy</Link>
+            <Link href="/contact" className="footer-link">Contact</Link>
           </nav>
 
           <p className="text-sm text-gray-600">
