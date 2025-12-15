@@ -1,10 +1,17 @@
 import type { Metadata } from "next";
 import Script from "next/script";
-import { Inter } from "next/font/google";
+import { Outfit, Instrument_Serif } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({
-  variable: "--font-inter",
+const outfit = Outfit({
+  variable: "--font-outfit",
+  subsets: ["latin"],
+  display: "swap",
+});
+
+const instrumentSerif = Instrument_Serif({
+  variable: "--font-instrument-serif",
+  weight: "400",
   subsets: ["latin"],
   display: "swap",
 });
@@ -14,6 +21,10 @@ export const metadata: Metadata = {
   description: "Getia is a venture studio based in Norway. We transform bold ideas into market-defining products across AI, SaaS, and next-generation consumer experiences.",
   keywords: ["venture studio", "startup", "investment", "Norway", "SaaS", "AI", "digital products"],
   authors: [{ name: "Getia" }],
+  icons: {
+    icon: "/logo/getia-favicon.svg",
+    apple: "/logo/getia-favicon.svg",
+  },
   openGraph: {
     title: "Getia | Building the Future of Digital Products",
     description: "We transform bold ideas into market-defining products.",
@@ -47,7 +58,7 @@ export default function RootLayout({
           strategy="afterInteractive"
         />
       </head>
-      <body className={`${inter.variable} font-sans antialiased`}>
+      <body className={`${outfit.variable} ${instrumentSerif.variable} font-sans antialiased`}>
         {children}
       </body>
     </html>

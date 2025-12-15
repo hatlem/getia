@@ -1,4 +1,5 @@
 import Link from "next/link"
+import Image from "next/image"
 
 export const metadata = {
   title: "Terms of Service - Getia",
@@ -11,7 +12,9 @@ export default function TermsPage() {
       <header className="py-6 border-b border-gray-900">
         <div className="container">
           <div className="flex items-center justify-between">
-            <Link href="/" className="text-xl font-medium tracking-tight">Getia</Link>
+            <Link href="/">
+              <Image src="/logo/getia-logo.svg" alt="Getia" width={80} height={28} className="invert" />
+            </Link>
             <nav className="flex items-center gap-6">
               <Link href="/privacy" className="text-sm text-gray-400 hover:text-white transition">Privacy</Link>
               <Link href="/contact" className="text-sm text-gray-400 hover:text-white transition">Contact</Link>
@@ -89,7 +92,9 @@ export default function TermsPage() {
       <footer className="py-10 border-t border-gray-900">
         <div className="container">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-            <Link href="/" className="text-xl font-medium tracking-tight">Getia</Link>
+            <Link href="/">
+              <Image src="/logo/getia-logo.svg" alt="Getia" width={80} height={28} className="invert" />
+            </Link>
             <nav className="flex items-center gap-8">
               <Link href="/terms" className="text-sm text-gray-400 hover:text-white transition">Terms</Link>
               <Link href="/privacy" className="text-sm text-gray-400 hover:text-white transition">Privacy</Link>

@@ -51,15 +51,15 @@ export default function Investors() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.15 }}
-          className="card-glass p-8 lg:p-12 relative overflow-hidden"
+          className="card-glass relative overflow-hidden"
         >
           {/* Accent blur */}
           <div
-            className="gradient-blur bg-[#c8ff00]"
+            className="gradient-blur bg-[#c8ff00] z-0"
             style={{ top: '-30%', right: '-10%', opacity: 0.12 }}
           />
 
-          <div className="relative grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+          <div className="relative z-10 grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
             <div>
               <h3 className="title text-white mb-5">Join Our Cap Table</h3>
               <p className="body mb-8">

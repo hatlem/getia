@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
@@ -27,9 +28,16 @@ export default function Navigation() {
       <nav className="container flex items-center justify-between">
         <Link
           href="/"
-          className="text-xl font-medium tracking-tight hover:opacity-70 transition-opacity"
+          className="hover:opacity-70 transition-opacity"
         >
-          Getia
+          <Image
+            src="/logo/getia-logo.svg"
+            alt="Getia"
+            width={80}
+            height={28}
+            priority
+            className="invert"
+          />
         </Link>
 
         <div className="hidden md:flex items-center gap-10">

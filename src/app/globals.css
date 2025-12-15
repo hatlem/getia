@@ -1,11 +1,10 @@
 @import "tailwindcss";
-@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500;600&display=swap');
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: 'Outfit', system-ui, sans-serif;
-  --font-serif: 'Instrument Serif', Georgia, serif;
+  --font-sans: var(--font-outfit), system-ui, sans-serif;
+  --font-serif: var(--font-instrument-serif), Georgia, serif;
 }
 
 /* ===== DESIGN TOKENS ===== */
@@ -326,7 +325,20 @@ a, button {
   backdrop-filter: blur(40px);
   -webkit-backdrop-filter: blur(40px);
   border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: var(--radius-2xl);
+  border-radius: var(--radius-xl);
+  padding: var(--space-8);
+}
+
+@media (min-width: 640px) {
+  .card-glass {
+    padding: var(--space-10);
+  }
+}
+
+@media (min-width: 1024px) {
+  .card-glass {
+    padding: var(--space-12);
+  }
 }
 
 /* ===== TAG/BADGE ===== */

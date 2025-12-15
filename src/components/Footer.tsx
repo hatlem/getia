@@ -1,14 +1,21 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Footer() {
   return (
     <footer className="py-10 lg:py-12 border-t border-gray-900">
       <div className="container">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-          <Link href="/" className="text-xl font-medium tracking-tight">
-            Getia
+          <Link href="/">
+            <Image
+              src="/logo/getia-logo.svg"
+              alt="Getia"
+              width={80}
+              height={28}
+              className="invert"
+            />
           </Link>
 
           <nav className="flex items-center gap-8">
