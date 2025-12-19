@@ -17,10 +17,28 @@ export default function ContactPage() {
     e.preventDefault()
     setIsSubmitting(true)
 
-    await new Promise((resolve) => setTimeout(resolve, 1000))
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...formData,
+          type: "general",
+        }),
+      })
 
-    setIsSubmitted(true)
-    setIsSubmitting(false)
+      if (!response.ok) {
+        throw new Error("Failed to send message")
+      }
+
+      setIsSubmitted(true)
+      setFormData({ name: "", email: "", message: "" })
+    } catch (error) {
+      console.error("Error sending message:", error)
+      alert("Failed to send message. Please try emailing us directly at hello@getia.no")
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
