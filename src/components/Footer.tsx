@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import NewsletterSignup from "./NewsletterSignup";
 
 export default function Footer() {
   return (
@@ -27,6 +28,11 @@ export default function Footer() {
           <p className="text-sm text-gray-600">
             &copy; {new Date().getFullYear()} Getia
           </p>
+        </div>
+
+        {/* Newsletter Signup */}
+        <div className="border-t border-gray-800 mt-8 pt-8">
+          <NewsletterSignup />
         </div>
       </div>
     </footer>

@@ -1,36 +1,91 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# GetIA
+
+Corporate website and venture studio portfolio for Getia AS.
+
+## Overview
+
+GetIA is the public-facing website for Getia AS, a Norwegian venture studio based in Oslo. The site showcases the company's portfolio, investment thesis, team, and provides contact points for investors, founders, and talent.
+
+**Website**: [https://getia.no](https://getia.no)
+
+## Features
+
+### Portfolio Showcase
+- **Featured Companies** - Showcase of portfolio companies across:
+  - Privacy Tech (CookieMonster)
+  - PropTech (RoomManager)
+  - Analytics (Customer Insights)
+  - AdTech (Lead Bidding)
+  - Creator Economy (Creator Platform)
+  - Travel Tech (TravelBuddy)
+
+### Capabilities
+- Product Strategy
+- UI/UX Design
+- Full-Stack Development
+- Growth Marketing
+- Data Analytics
+- Infrastructure
+
+### Investor Relations
+- Investment thesis and Series A information
+- Benefits for strategic LPs
+- Pro-rata rights for follow-on investments
+- Quarterly investor updates
+
+### Team Section
+- Core leadership profiles
+- Founder & CEO: Andreas Hatlem
+
+### Contact & Newsletter
+- Segmented contact form (Investor, Founder, Talent)
+- AI Insights Newsletter subscription
+- Integration with GetMailer for email delivery
+
+## Tech Stack
+
+- **Framework**: Next.js 16, React 19
+- **Styling**: Tailwind CSS, Radix UI
+- **Animations**: Framer Motion
+- **Email**: Resend, GetMailer integration
+- **Fonts**: Outfit (sans), Instrument Serif (accent)
+
+## Design
+
+- **Primary Color**: #c8ff00 (Lime Green)
+- **Background**: #050505 (Dark theme)
+- **Effects**: Noise textures, gradient blur accents, cursor glow
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js 18+
+- pnpm
+
+### Installation
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+pnpm install
+cp .env.example .env
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view the website.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Environment Variables
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+GETMAILER_API_URL=
+GETMAILER_API_KEY=
+EMAIL_FROM=
+NEXT_PUBLIC_APP_URL=
+```
 
-## Learn More
+## Deployment
 
-To learn more about Next.js, take a look at the following resources:
+Deployed on Railway.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## License
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Private - All rights reserved.
